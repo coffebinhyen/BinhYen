@@ -8,9 +8,12 @@
     box-sizing: border-box;
 }
 
+    
+
 img{
     width: 100%;
     display: flex;
+    justify-content: space-around;
 }
 
 a{
@@ -20,6 +23,7 @@ a{
 body{
     font-family: 'Poppins', sans-serif;
     background-color: rgb(109, 62 , 38);
+    display: block;
 }
 
 nav{
@@ -34,6 +38,8 @@ nav{
 
 .nav-logo{
     max-width: 100px;
+    animation: slideInRight 2s forwards;
+    animation-timeline: scroll();
 }
 
 .nav-links{
@@ -68,14 +74,17 @@ nav{
     padding: 1rem 2rem;
     font-size: 1rem;
     color: #fff;
+    border-color: rgb(42, 21 , 16);
     background-color: rgb(42, 21 , 16);
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    
 }
 
 .btn:hover{
     background-color: #000000;
+    transform: scale(1.1);
 }
 
 .container{
@@ -174,9 +183,11 @@ section .header{
     transition: all 0.3s ease;
 }
 
-.features .card:hover{
+.features .card:hover {
     background-color: #323232;
-    border-color: rgb(42, 21 , 16);
+        border-color: rgb(42, 21 , 16);
+        transform: translate(25px, 50px) scale(1.3) ;
+
 }
 
 .features .card span{
@@ -237,8 +248,10 @@ section .header{
 .pricing .card:hover{
     background-color: #323232;
     border-color: rgb(42, 21 , 16);
-}
+    transform: translate(25px, 50px) scale(1.2) /* Đẩy phần tử ra phía trước 100px */
+    
 
+}
 .pricing .card .content{
     flex: 1;
     margin-bottom: 4rem;
@@ -383,5 +396,29 @@ footer .column > a:hover{
 
     footer{
         grid-template-columns: 1fr 150px;
+    }
+    .slide-in {
+        animation: slideInRight 5s forwards; /* Thay đổi thời gian tùy theo ý thích */
+        opacity: 0; /* Bắt đầu với độ mờ */
+    }
+    
+    @keyframes slideInRight {
+        0% {
+            transform: translateX(100%); /* Bắt đầu bên ngoài khung nhìn từ bên phải */
+            opacity: 0; /* Độ mờ ban đầu */
+        }
+        100% {
+            transform: translateX(0); /* Kết thúc ở vị trí ban đầu */
+            opacity: 1; /* Độ mờ hoàn toàn */
+        }
+    }
+    .logo {
+        opacity: 0; /* Bắt đầu với độ mờ */
+        transition: opacity 1s ease-in-out; /* Hiệu ứng chuyển tiếp */
+        width: 200px; /* Điều chỉnh kích thước hình ảnh */
+    }
+    
+    .logo.visible {
+        opacity: 1; /* Độ mờ hoàn toàn khi có class visible */
     }
 }
